@@ -7,6 +7,7 @@ import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.util.ServerOnly;
 import dev.xkmc.playerdifficulty.init.PlayerDifficulty;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -35,8 +36,15 @@ public class PlayerLevel extends PlayerCapabilityTemplate<PlayerLevel> {
 	public int difficulty;
 
 	@ServerOnly
-	public void syncToClient(){
-
+	public void syncToClient() {
+		HOLDER.network.toClientSyncAll((ServerPlayer) player);
 	}
 
+	public float getChampionChance(int tier, float chance) {
+		if (true) return 1;// TODO test
+		float level = (difficulty - tier) * 2;
+		if (level >= 0)
+			return 1 - (float) Math.pow(1 - chance, level);
+		return (float) Math.pow(chance, -level);
+	}
 }

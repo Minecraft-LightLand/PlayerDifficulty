@@ -128,6 +128,10 @@ dependencies {
     implementation fg.deobf('dev.xkmc.l2library:l2library:0.0.6')
     implementation fg.deobf('dev.xkmc.l2backpack:l2backpack:0.0.2')
 
+    implementation fg.deobf('curse.maven:placebo-283644:3781199')
+    implementation fg.deobf('curse.maven:champions-307152:3783685')
+    implementation fg.deobf('curse.maven:apotheosis-313970:3781524')
+
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
 
 }
