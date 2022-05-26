@@ -1,0 +1,9 @@
+{
+  "item.playerdifficulty": {
+    "check": "难度查看器",
+    "up": "难度上升",
+    "down": "难度下降"
+  },
+  "block.playerdifficulty": {
+  }
+}

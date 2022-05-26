@@ -1,0 +1,7 @@
+{
+  "item.playerdifficulty.check": "\u029E\u0254\u01DD\u0265\u0186",
+  "item.playerdifficulty.down": "u\u028Do\u15E1",
+  "item.playerdifficulty.up": "d\u2229",
+  "itemGroup.playerdifficulty.material": "\u05DF\u0250\u0131\u0279\u01DD\u0287\u0250W",
+  "playerdifficulty.tooltip.difficulty": "%s :\u028E\u0287\u05DFn\u0254\u0131\u025F\u025F\u0131\u15E1"
+}

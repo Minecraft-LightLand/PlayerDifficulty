@@ -1,8 +1,13 @@
 package dev.xkmc.playerdifficulty.init;
 
 import dev.xkmc.l2library.base.LcyRegistrate;
+import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2library.serial.handler.Handlers;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
+import dev.xkmc.playerdifficulty.events.MobSpawnEventHandler;
+import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
+import dev.xkmc.playerdifficulty.init.data.LangData;
+import dev.xkmc.playerdifficulty.init.data.LootGen;
 import dev.xkmc.playerdifficulty.network.NetworkManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -27,14 +32,17 @@ public class PlayerDifficulty {
 	public static final LcyRegistrate REGISTRATE = new LcyRegistrate(MODID);
 
 	private static void registerRegistrates(IEventBus bus) {
+		PDItems.register();
 		Handlers.register();
 		NetworkManager.register();
-
+		DifficultyConfig.init();
 		PlayerLevel.register();
+		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::genLang);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
 	}
 
 	private static void registerForgeEvents() {
-
+		MinecraftForge.EVENT_BUS.register(MobSpawnEventHandler.class);
 	}
 
 	private static void registerModBusEvents(IEventBus bus) {
@@ -64,7 +72,6 @@ public class PlayerDifficulty {
 	}
 
 	public static void gatherData(GatherDataEvent event) {
-		//LangData.addTranslations(REGISTRATE::addRawLang);
 	}
 
 	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {

@@ -1,0 +1,6 @@
+1cdc1bb7c3b7115587204761d016912426e396d5 assets/playerdifficulty/lang/en_ud.json
+daaea9b00fa44da3cef99fa00683f7789660ea6e assets/playerdifficulty/lang/en_us.json
+0e1ac7da2601e9723d262f00600d31a66c1679c0 assets/playerdifficulty/models/item/check.json
+0d1e44c1581ecdde31c748f4d011f12cd9295996 assets/playerdifficulty/models/item/down.json
+bf27fad069ba06e94f6d866f0615d996dfb581e6 assets/playerdifficulty/models/item/up.json
+ab2254af808331add99b21c915400d99fb9230c5 data/playerdifficulty/loot_tables/difficulty.json

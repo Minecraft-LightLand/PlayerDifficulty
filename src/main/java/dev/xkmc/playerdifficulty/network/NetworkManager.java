@@ -8,13 +8,11 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
-
 public class NetworkManager {
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			new ResourceLocation(PlayerDifficulty.MODID, "main"), 1, "difficulty_config"
-			);
+	);
 
 	public static Stream<Map.Entry<String, BaseConfig>> getConfigs(String id) {
 		return HANDLER.CONFIGS.entrySet().stream()

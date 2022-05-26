@@ -28,18 +28,17 @@ public abstract class ResourceOrganizer {
     public static void main(String[] args) throws Exception {
         new LangFileOrganizer();
         new ItemFileOrganizer();
-        new BlockFileOrganizer();
+        //new BlockFileOrganizer();
         //new ArmorFileOrganizer();
-        new RecipeFileOrganizer();
-        new AssetMisc();
-        new DataMisc();
-        new ConfigFileOrganizer();
-        new GeckoMisc();
+        //new RecipeFileOrganizer();
+        //new AssetMisc();
+        //new DataMisc();
+        //new ConfigFileOrganizer();
+        //new GeckoMisc();
         File f = new File("./src/test/resources");
         for (File fi : f.listFiles()) {
             MODID = fi.getName();
-            delete(new File("./src/main/resources/assets/lightland/"));
-            delete(new File("./src/main/resources/data/lightland/recipes"));
+            delete(new File("./src/main/resources/assets/playerdifficulty/"));
             if (!fi.isDirectory())
                 continue;
             for (ResourceOrganizer obj : MAP.values()) {
@@ -76,7 +75,7 @@ public abstract class ResourceOrganizer {
     }
 
     public final String getResourceFolder(boolean main) {
-        return (main ? "./src/main/resources/" : "./lightland/src/test/resources/");
+        return (main ? "./src/main/resources/" : "./playerdifficulty/src/test/resources/");
     }
 
     protected String readFile(String path) {

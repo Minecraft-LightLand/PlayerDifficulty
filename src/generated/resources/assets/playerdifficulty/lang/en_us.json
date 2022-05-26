@@ -1,0 +1,7 @@
+{
+  "item.playerdifficulty.check": "Check",
+  "item.playerdifficulty.down": "Down",
+  "item.playerdifficulty.up": "Up",
+  "itemGroup.playerdifficulty.material": "Material",
+  "playerdifficulty.tooltip.difficulty": "Difficulty: %s"
+}

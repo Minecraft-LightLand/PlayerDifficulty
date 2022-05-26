@@ -8,11 +8,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class MobSpawnEventHandler {
 
-	@SubscribeEvent(priority = EventPriority.LOW)
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onSpecialSpawn(LivingSpawnEvent.SpecialSpawn evt) {
 		LivingEntity entity = evt.getEntityLiving();
 		CompatManager.onSpawn(entity);
-
 	}
 
 
