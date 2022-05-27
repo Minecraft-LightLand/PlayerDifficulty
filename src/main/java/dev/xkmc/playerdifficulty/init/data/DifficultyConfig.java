@@ -59,7 +59,7 @@ public class DifficultyConfig {
 			builder.push("scalingHealth");
 			scalingHealthFactor = builder.comment("ScalingHealth difficulty to PlayerDifficulty difficilty ratio")
 					.worldRestart()
-					.defineInRange("scalingHealthFactor", 0.001, 0.1, 1000);
+					.defineInRange("scalingHealthFactor", 1, 0.001, 1000);
 			builder.pop();
 
 		}
