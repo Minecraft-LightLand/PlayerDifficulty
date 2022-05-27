@@ -5,11 +5,9 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.util.ServerOnly;
-import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import dev.xkmc.playerdifficulty.init.PlayerDifficulty;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -25,10 +23,6 @@ public class PlayerLevel extends PlayerCapabilityTemplate<PlayerLevel> {
 			PlayerLevel.class, PlayerLevel::new, PlayerCapabilityNetworkHandler::new
 	);
 
-	public static PlayerLevel get(Player player) {
-		return HOLDER.get(player);
-	}
-
 	public static void register() {
 
 	}
@@ -36,15 +30,17 @@ public class PlayerLevel extends PlayerCapabilityTemplate<PlayerLevel> {
 	@SerialClass.SerialField
 	public int difficulty;
 
+	public float getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(float difficulty) {
+		this.difficulty = Math.round(difficulty);
+	}
+
 	@ServerOnly
 	public void syncToClient() {
 		HOLDER.network.toClientSyncAll((ServerPlayer) player);
 	}
 
-	public float getChampionChance(int tier, float chance) {
-		float level = difficulty * 1f / DifficultyConfig.COMMON.championsTierFactor.get() - tier;
-		if (level >= 0)
-			return 1 - (float) Math.pow(1 - chance, level);
-		return (float) Math.pow(chance, -level);
-	}
 }

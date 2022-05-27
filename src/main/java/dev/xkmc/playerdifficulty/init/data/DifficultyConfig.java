@@ -9,18 +9,59 @@ public class DifficultyConfig {
 
 	public static class Common {
 
-		public final ForgeConfigSpec.IntValue championsTierFactor;
 		public final ForgeConfigSpec.IntValue maxDifficulty;
+
+		public final ForgeConfigSpec.BooleanValue championEnable;
+		public final ForgeConfigSpec.IntValue championsTierFactor;
+		public final ForgeConfigSpec.IntValue championsTierSeparation;
+
+		public final ForgeConfigSpec.BooleanValue apotheosisEnable;
+		public final ForgeConfigSpec.IntValue apotheosisTierFactor;
+		public final ForgeConfigSpec.IntValue apotheosisTierSeparation;
+		public final ForgeConfigSpec.DoubleValue apotheosisTierChance;
+
+		public final ForgeConfigSpec.DoubleValue scalingHealthFactor;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("difficulty");
-			championsTierFactor = builder.comment("How many difficulties to match one tier")
-					.worldRestart()
-					.defineInRange("championsTierFactor", 10, 1, 100);
 			maxDifficulty = builder.comment("Maximum Difficulty")
 					.worldRestart()
 					.defineInRange("maxDifficulty", 100, 5, 10000);
 			builder.pop();
+
+			builder.push("champion");
+			championEnable = builder.comment("enable champion module in general")
+					.worldRestart()
+					.define("championEnable", true);
+			championsTierFactor = builder.comment("How many difficulties to match one tier")
+					.worldRestart()
+					.defineInRange("championsTierFactor", 10, 1, 100);
+			championsTierSeparation = builder.comment("To what power does tier spawn chance to differ")
+					.worldRestart()
+					.defineInRange("championsTierSeparation", 2, 1, 10);
+			builder.pop();
+
+			builder.push("apotheosis");
+			apotheosisEnable = builder.comment("enable apotheosis module in general (note: apotheosis deadly module is not completed yet)")
+					.worldRestart()
+					.define("apotheosisEnable", false);
+			apotheosisTierFactor = builder.comment("How many difficulties to match one tier")
+					.worldRestart()
+					.defineInRange("apotheosisTierFactor", 10, 1, 100);
+			apotheosisTierSeparation = builder.comment("To what power does tier spawn chance to differ")
+					.worldRestart()
+					.defineInRange("apotheosisTierSeparation", 2, 1, 10);
+			apotheosisTierChance = builder.comment("Successive chance to generate next tier item")
+					.worldRestart()
+					.defineInRange("apotheosisTierChance", 0.2, 0.01, 0.9);
+			builder.pop();
+
+			builder.push("scalingHealth");
+			scalingHealthFactor = builder.comment("ScalingHealth difficulty to PlayerDifficulty difficilty ratio")
+					.worldRestart()
+					.defineInRange("scalingHealthFactor", 0.001, 0.1, 1000);
+			builder.pop();
+
 		}
 
 	}

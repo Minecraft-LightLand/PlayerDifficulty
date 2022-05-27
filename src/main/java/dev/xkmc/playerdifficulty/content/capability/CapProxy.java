@@ -7,8 +7,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CapProxy {
 
 	@OnlyIn(Dist.CLIENT)
-	public static PlayerLevel getHandler() {
-		return PlayerLevel.get(Proxy.getClientPlayer());
+	public static DifficultyCap getHandler() {
+		return DifficultyCap.get(Proxy.getClientPlayer());
 	}
 
 }

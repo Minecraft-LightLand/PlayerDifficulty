@@ -1,6 +1,6 @@
 package dev.xkmc.playerdifficulty.content.item;
 
-import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
+import dev.xkmc.playerdifficulty.content.capability.DifficultyCap;
 import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,9 +24,9 @@ public class LevelChangeItem extends LevelCheckItem {
 
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		if (entity instanceof ServerPlayer player) {
-			PlayerLevel playerLevel = PlayerLevel.get(player);
-			int next = playerLevel.difficulty + change;
-			playerLevel.difficulty = Mth.clamp(next, 0, DifficultyConfig.COMMON.maxDifficulty.get());
+			DifficultyCap playerLevel = DifficultyCap.get(player);
+			float next = playerLevel.getDifficultyValue() + change;
+			playerLevel.setDifficultyValue(Mth.clamp(next, 0, DifficultyConfig.COMMON.maxDifficulty.get()));
 			playerLevel.syncToClient();
 		}
 		return super.finishUsingItem(stack, level, entity);

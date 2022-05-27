@@ -1,9 +1,8 @@
 package dev.xkmc.playerdifficulty.compat.champions;
 
 import com.google.common.collect.ImmutableSortedMap;
-import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
+import dev.xkmc.playerdifficulty.content.capability.DifficultyCap;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import top.theillusivec4.champions.Champions;
 import top.theillusivec4.champions.api.IAffix;
 import top.theillusivec4.champions.api.IChampion;
@@ -21,10 +20,9 @@ import java.util.Random;
 
 public class SpawnReset {
 
-	public static void onSpawn(Player player, LivingEntity entity) {
+	public static void onSpawn(DifficultyCap level, LivingEntity entity) {
 		ChampionCapability.getCapability(entity).ifPresent((champion) -> {
-			if (player != null && champion.getServer().getRank().isEmpty()) {
-				PlayerLevel level = PlayerLevel.get(player);
+			if (champion.getServer().getRank().isEmpty()) {
 				spawn(level, champion);
 			}
 		});
@@ -33,7 +31,7 @@ public class SpawnReset {
 	/**
 	 * Copied from ChampionBuilder
 	 */
-	private static void spawn(PlayerLevel level, IChampion champion) {
+	private static void spawn(DifficultyCap level, IChampion champion) {
 		LivingEntity entity = champion.getLivingEntity();
 		Rank newRank = createRank(level, entity);
 		if (champion.getServer().getRank().isPresent() && champion.getServer().getRank().get().getTier() > newRank.getTier())
@@ -50,7 +48,7 @@ public class SpawnReset {
 	/**
 	 * Copied and modified from ChampionBuilder
 	 */
-	private static Rank createRank(PlayerLevel playerLevel, LivingEntity livingEntity) {
+	private static Rank createRank(DifficultyCap playerLevel, LivingEntity livingEntity) {
 		if (!ChampionHelper.checkPotential(livingEntity)) {
 			return RankManager.getLowestRank();
 		}

@@ -20,7 +20,7 @@ import java.util.Map;
 public class ConfigFileOrganizer extends ResourceOrganizer {
 
     public ConfigFileOrganizer() {
-        super(Type.DATA, "lightland_config", "lightland_config/");
+        super(Type.DATA, "difficulty_config", "difficulty_config/");
     }
 
     private Map<String, List<JsonPart>> parts;
