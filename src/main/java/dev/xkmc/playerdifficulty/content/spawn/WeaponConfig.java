@@ -22,7 +22,7 @@ public class WeaponConfig extends BaseConfig {
 
 	public static WeaponConfig getInstance() {
 		if (cache != null) return cache;
-		List<WeaponConfig> configs = NetworkManager.getConfigs("weapon").map(e -> (WeaponConfig) e).toList();
+		List<WeaponConfig> configs = NetworkManager.getConfigs("weapon").map(e -> (WeaponConfig) e.getValue()).toList();
 		HashMap<Type, ArrayList<Entry>> map = BaseConfig.collectMap(configs, e -> e.items);
 		HashMap<EntityType<?>, Type> types = BaseConfig.collectMap(configs, e -> e.types);
 		WeaponConfig ans = new WeaponConfig();

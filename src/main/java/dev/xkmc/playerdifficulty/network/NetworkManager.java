@@ -21,7 +21,7 @@ public class NetworkManager {
 		return HANDLER.CONFIGS.entrySet().stream()
 				.filter(e -> {
 					String path = new ResourceLocation(e.getKey()).getPath();
-					String[] paths = path.split("_");
+					String[] paths = path.split("/");
 					return paths[0].equals(id);
 				});
 	}

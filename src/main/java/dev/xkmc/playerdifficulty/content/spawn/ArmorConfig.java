@@ -23,7 +23,7 @@ public class ArmorConfig extends BaseConfig {
 
 	public static ArmorConfig getInstance() {
 		if (cache != null) return cache;
-		List<ArmorConfig> configs = NetworkManager.getConfigs("armor").map(e -> (ArmorConfig) e).toList();
+		List<ArmorConfig> configs = NetworkManager.getConfigs("armor").map(e -> (ArmorConfig) e.getValue()).toList();
 		ArrayList<Entry> list = BaseConfig.collectList(configs, e -> e.items);
 		HashSet<EntityType<?>> types = BaseConfig.collectSet(configs, e -> e.types);
 		ArmorConfig ans = new ArmorConfig();
