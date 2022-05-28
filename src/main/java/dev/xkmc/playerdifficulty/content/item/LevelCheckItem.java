@@ -25,7 +25,7 @@ public class LevelCheckItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (level != null && level.isClientSide() && Proxy.getClientPlayer() != null && PlayerLevel.HOLDER.isProper(Proxy.getClientPlayer())) {
+		if (level != null && level.isClientSide() && Proxy.getPlayer() != null && PlayerLevel.HOLDER.isProper(Proxy.getPlayer())) {
 			list.add(LangData.DIFFICULTY.get(Math.round(CapProxy.getHandler().getDifficultyValue())));
 		}
 		super.appendHoverText(stack, level, list, flag);

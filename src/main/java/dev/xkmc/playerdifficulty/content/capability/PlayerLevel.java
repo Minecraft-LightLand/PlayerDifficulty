@@ -15,10 +15,10 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 @SerialClass
 public class PlayerLevel extends PlayerCapabilityTemplate<PlayerLevel> {
 
-	public static Capability<PlayerLevel> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
+	public static final Capability<PlayerLevel> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
 	});
 
-	public static PlayerCapabilityHolder<PlayerLevel> HOLDER = new PlayerCapabilityHolder<>(
+	public static final PlayerCapabilityHolder<PlayerLevel> HOLDER = new PlayerCapabilityHolder<>(
 			new ResourceLocation(PlayerDifficulty.MODID, "player_data"), CAPABILITY,
 			PlayerLevel.class, PlayerLevel::new, PlayerCapabilityNetworkHandler::new
 	);
