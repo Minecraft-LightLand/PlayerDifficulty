@@ -77,9 +77,6 @@ public class SpawnReset {
 					return result;
 				}
 				float chance = rank.getChance();
-				if (Champions.scalingHealthLoaded) {
-					chance = (float) ((double) chance + ScalingHealthPlugin.getSpawnIncrease(rank.getTier(), livingEntity));
-				}
 				chance = playerLevel.getChampionChance(rank.getTier(), chance);
 				if (!(RAND.nextFloat() < chance)) {
 					return result;
