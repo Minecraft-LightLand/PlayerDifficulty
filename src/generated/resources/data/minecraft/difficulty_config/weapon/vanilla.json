@@ -1,6 +1,20 @@
 {
   "_class": "dev.xkmc.playerdifficulty.content.spawn.WeaponConfig",
   "items": {
+    "TRIDENT": [
+      {
+        "item": "minecraft:trident",
+        "level": 10.0,
+        "weight": 1000
+      }
+    ],
+    "CROSSBOW": [
+      {
+        "item": "minecraft:crossbow",
+        "level": 0.0,
+        "weight": 400
+      }
+    ],
     "MEELEE": [
       {
         "item": "minecraft:iron_axe",
@@ -63,20 +77,6 @@
         "weight": 25
       }
     ],
-    "CROSSBOW": [
-      {
-        "item": "minecraft:crossbow",
-        "level": 0.0,
-        "weight": 400
-      }
-    ],
-    "TRIDENT": [
-      {
-        "item": "minecraft:trident",
-        "level": 10.0,
-        "weight": 1000
-      }
-    ],
     "BOW": [
       {
         "item": "minecraft:bow",
@@ -86,20 +86,15 @@
     ]
   },
   "types": {
-    "minecraft:stray": [
-      "BOW"
-    ],
-    "minecraft:vindicator": [
-      "MEELEE"
-    ],
-    "minecraft:zombified_piglin": [
-      "MEELEE"
-    ],
     "minecraft:husk": [
       "MEELEE"
     ],
-    "minecraft:pillager": [
-      "CROSSBOW"
+    "minecraft:piglin": [
+      "CROSSBOW",
+      "MEELEE"
+    ],
+    "minecraft:stray": [
+      "BOW"
     ],
     "minecraft:skeleton": [
       "BOW"
@@ -107,21 +102,26 @@
     "minecraft:zombie_villager": [
       "MEELEE"
     ],
-    "minecraft:zombie": [
+    "minecraft:wither_skeleton": [
       "MEELEE"
-    ],
-    "minecraft:drowned": [
-      "TRIDENT"
     ],
     "minecraft:piglin_brute": [
       "MEELEE"
     ],
-    "minecraft:piglin": [
-      "MEELEE",
+    "minecraft:zombified_piglin": [
+      "MEELEE"
+    ],
+    "minecraft:zombie": [
+      "MEELEE"
+    ],
+    "minecraft:pillager": [
       "CROSSBOW"
     ],
-    "minecraft:wither_skeleton": [
+    "minecraft:vindicator": [
       "MEELEE"
+    ],
+    "minecraft:drowned": [
+      "TRIDENT"
     ]
   }
 }
