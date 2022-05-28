@@ -14,7 +14,7 @@ description='''
     modId="forge"
     mandatory=true
     versionRange="[40.1,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 [[dependencies.playerdifficulty]]
     modId="minecraft"
@@ -27,4 +27,10 @@ description='''
     mandatory=true
     versionRange="[0.0.8,)"
     ordering="AFTER"
+    side="BOTH"
+[[dependencies.playerdifficulty]]
+    modId="scalinghealth"
+    mandatory=false
+    versionRange="[6.2.0,)"
+    ordering="BEFORE"
     side="BOTH"
