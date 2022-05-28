@@ -32,18 +32,18 @@ public class DifficultyConfig {
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("difficulty");
 			maxDifficulty = builder.comment("Maximum Difficulty")
-					.defineInRange("maxDifficulty", 100, 5, 10000);
+					.defineInRange("maxDifficulty", 250, 5, 10000);
 			altDifficulty = builder.comment("Change in difficulty when using up or down item")
 					.defineInRange("altDifficulty", 10, 1, 10000);
 			builder.pop();
 
 			builder.push("equipment");
 			enchantLevelFactor = builder.comment("Enchantment level factor")
-					.defineInRange("enchantLevelFactor", 0.6,0.001,  1);
+					.defineInRange("enchantLevelFactor", 0.4,0.001,  1);
 			armorChanceFactor = builder.comment("armor spawn chance factor")
-					.defineInRange("armorChanceFactor", 0.02,0.001,  1);
+					.defineInRange("armorChanceFactor", 0.01,0.001,  1);
 			weaponChanceFactor = builder.comment("weapon spawn chance factor")
-					.defineInRange("weaponChanceFactor", 0.04,0.001,  1);
+					.defineInRange("weaponChanceFactor", 0.02,0.001,  1);
 			dropChance = builder.comment("equipment drop chance")
 					.defineInRange("dropChance", 0.085,0.085,  1);
 			builder.pop();
@@ -52,7 +52,7 @@ public class DifficultyConfig {
 			championEnable = builder.comment("enable champion module in general")
 					.define("championEnable", true);
 			championsTierFactor = builder.comment("How many difficulties to match one tier")
-					.defineInRange("championsTierFactor", 10, 1, 100);
+					.defineInRange("championsTierFactor", 50, 1, 100);
 			championsTierSeparation = builder.comment("To what power does tier spawn chance to differ")
 					.defineInRange("championsTierSeparation", 2, 1, 10);
 			builder.pop();
@@ -61,7 +61,7 @@ public class DifficultyConfig {
 			apotheosisEnable = builder.comment("enable apotheosis module in general (note: apotheosis deadly module is not completed yet)")
 					.define("apotheosisEnable", false);
 			apotheosisTierFactor = builder.comment("How many difficulties to match one tier")
-					.defineInRange("apotheosisTierFactor", 10, 1, 100);
+					.defineInRange("apotheosisTierFactor", 50, 1, 100);
 			apotheosisTierSeparation = builder.comment("To what power does tier spawn chance to differ")
 					.defineInRange("apotheosisTierSeparation", 2, 1, 10);
 			apotheosisTierChance = builder.comment("Successive chance to generate next tier item")
@@ -70,7 +70,7 @@ public class DifficultyConfig {
 
 			builder.push("scalingHealth");
 			scalingHealthFactor = builder.comment("ScalingHealth difficulty to PlayerDifficulty difficulty ratio")
-					.defineInRange("scalingHealthFactor", 0.4, 0.001, 1000);
+					.defineInRange("scalingHealthFactor", 1, 0.001, 1000);
 			builder.pop();
 
 		}

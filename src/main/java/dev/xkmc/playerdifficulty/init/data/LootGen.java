@@ -4,14 +4,15 @@ import dev.xkmc.l2library.repack.registrate.providers.loot.RegistrateLootTablePr
 import dev.xkmc.l2library.util.LootTableTemplate;
 import dev.xkmc.playerdifficulty.compat.champions.ChampionDataGen;
 import dev.xkmc.playerdifficulty.init.PDItems;
-import dev.xkmc.playerdifficulty.init.PlayerDifficulty;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import top.theillusivec4.champions.api.IAffix;
 import top.theillusivec4.champions.common.affix.*;
 import top.theillusivec4.champions.common.loot.LootItemChampionPropertyCondition;
@@ -22,21 +23,40 @@ public class LootGen {
 		Registry.register(Registry.LOOT_CONDITION_TYPE, new ResourceLocation("champions:champion_properties"), LootItemChampionPropertyCondition.INSTANCE);
 		pvd.addLootAction(RegistrateLootTableProvider.LootType.ENTITY, (e) -> {
 
-			e.add(new ResourceLocation(PlayerDifficulty.MODID, "difficulty"),
+			e.add(new ResourceLocation("champions:champion_loot"),
 					LootTable.lootTable()
 							.withPool(LootTableTemplate.getPool(1, 0)
 									.add(LootTableTemplate.getItem(PDItems.UP.get(), 1)
 											.when(LootItemKilledByPlayerCondition.killedByPlayer())
-											.when(()->ChampionDataGen.getTierAtLeast(1))
+											.when(() -> ChampionDataGen.getTierAtLeast(1))
 											.when(LootTableTemplate.chance(0.01f))))
 							.withPool(LootTableTemplate.getPool(1, 0)
 									.add(LootTableTemplate.getItem(PDItems.DOWN.get(), 1)
 											.when(LootItemKilledByPlayerCondition.killedByPlayer())
-											.when(()->ChampionDataGen.getTierAtLeast(2))
-											.when(LootTableTemplate.chance(0.01f)))));
+											.when(() -> ChampionDataGen.getTierAtLeast(2))
+											.when(LootTableTemplate.chance(0.01f))))
 
-			e.add(new ResourceLocation(PlayerDifficulty.MODID, "champion_affix_loot"),
-					LootTable.lootTable()
+							.withPool(LootTableTemplate.getPool(1, 0)
+									.add(LootTableTemplate.getItem(Items.BOOK, 1)
+											.when(LootItemKilledByPlayerCondition.killedByPlayer())
+											.when(() -> ChampionDataGen.getTierExact(1))
+											.apply(EnchantWithLevelsFunction.enchantWithLevels(ConstantValue.exactly(20)))))
+							.withPool(LootTableTemplate.getPool(1, 0)
+									.add(LootTableTemplate.getItem(Items.BOOK, 1)
+											.when(LootItemKilledByPlayerCondition.killedByPlayer())
+											.when(() -> ChampionDataGen.getTierExact(2))
+											.apply(EnchantWithLevelsFunction.enchantWithLevels(ConstantValue.exactly(40)))))
+							.withPool(LootTableTemplate.getPool(1, 0)
+									.add(LootTableTemplate.getItem(Items.BOOK, 1)
+											.when(LootItemKilledByPlayerCondition.killedByPlayer())
+											.when(() -> ChampionDataGen.getTierExact(3))
+											.apply(EnchantWithLevelsFunction.enchantWithLevels(ConstantValue.exactly(60)))))
+							.withPool(LootTableTemplate.getPool(1, 0)
+									.add(LootTableTemplate.getItem(Items.BOOK, 1)
+											.when(LootItemKilledByPlayerCondition.killedByPlayer())
+											.when(() -> ChampionDataGen.getTierExact(4))
+											.apply(EnchantWithLevelsFunction.enchantWithLevels(ConstantValue.exactly(80)))))
+
 							.withPool(bindAffix(Items.LAPIS_LAZULI, 16, new AdaptableAffix()))
 							.withPool(bindAffix(Items.BLUE_ICE, 16, new ArcticAffix()))
 							.withPool(bindAffix(Items.SCUTE, 4, new DampeningAffix()))

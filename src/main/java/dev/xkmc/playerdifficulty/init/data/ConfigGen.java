@@ -39,11 +39,11 @@ public class ConfigGen extends ConfigDataProvider {
 			armor.types.add(EntityType.EVOKER);
 
 			// vanilla tiered
-			armor.addItems(0, 100, Items.LEATHER_HELMET, Items.LEATHER_CHESTPLATE, Items.LEATHER_LEGGINGS, Items.LEATHER_BOOTS);
-			armor.addItems(10, 150, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS);
-			armor.addItems(20, 100, Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS);
-			armor.addItems(30, 50, Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS);
-			armor.addItems(40, 25, Items.NETHERITE_HELMET, Items.NETHERITE_CHESTPLATE, Items.NETHERITE_LEGGINGS, Items.NETHERITE_BOOTS);
+			armor.addItems(10, 100, Items.LEATHER_HELMET, Items.LEATHER_CHESTPLATE, Items.LEATHER_LEGGINGS, Items.LEATHER_BOOTS);
+			armor.addItems(20, 150, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS);
+			armor.addItems(40, 100, Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS);
+			armor.addItems(60, 50, Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS);
+			armor.addItems(80, 25, Items.NETHERITE_HELMET, Items.NETHERITE_CHESTPLATE, Items.NETHERITE_LEGGINGS, Items.NETHERITE_BOOTS);
 
 			map.put("minecraft/difficulty_config/armor/vanilla", armor);
 		}
@@ -66,13 +66,13 @@ public class ConfigGen extends ConfigDataProvider {
 			weapon.addType(EntityType.PILLAGER, WeaponConfig.Type.CROSSBOW);
 			weapon.addType(EntityType.VINDICATOR, WeaponConfig.Type.MEELEE);
 
-			weapon.addItem(WeaponConfig.Type.BOW, Items.BOW, 0, 400);
-			weapon.addItem(WeaponConfig.Type.CROSSBOW, Items.CROSSBOW, 0, 400);
-			weapon.addItem(WeaponConfig.Type.TRIDENT, Items.TRIDENT, 10, 1000);
-			weapon.addItems(WeaponConfig.Type.MEELEE, 10, 150, Items.IRON_AXE, Items.IRON_PICKAXE, Items.IRON_SWORD);
-			weapon.addItems(WeaponConfig.Type.MEELEE, 10, 100, Items.GOLDEN_AXE, Items.GOLDEN_PICKAXE, Items.GOLDEN_SWORD);
-			weapon.addItems(WeaponConfig.Type.MEELEE, 30, 50, Items.DIAMOND_AXE, Items.DIAMOND_PICKAXE, Items.DIAMOND_SWORD);
-			weapon.addItems(WeaponConfig.Type.MEELEE, 40, 25, Items.NETHERITE_AXE, Items.NETHERITE_PICKAXE, Items.NETHERITE_SWORD);
+			weapon.addItem(WeaponConfig.Type.BOW, Items.BOW, 10, 400);
+			weapon.addItem(WeaponConfig.Type.CROSSBOW, Items.CROSSBOW, 10, 400);
+			weapon.addItem(WeaponConfig.Type.TRIDENT, Items.TRIDENT, 20, 1000);
+			weapon.addItems(WeaponConfig.Type.MEELEE, 20, 150, Items.IRON_AXE, Items.IRON_PICKAXE, Items.IRON_SWORD);
+			weapon.addItems(WeaponConfig.Type.MEELEE, 20, 100, Items.GOLDEN_AXE, Items.GOLDEN_PICKAXE, Items.GOLDEN_SWORD);
+			weapon.addItems(WeaponConfig.Type.MEELEE, 40, 50, Items.DIAMOND_AXE, Items.DIAMOND_PICKAXE, Items.DIAMOND_SWORD);
+			weapon.addItems(WeaponConfig.Type.MEELEE, 60, 25, Items.NETHERITE_AXE, Items.NETHERITE_PICKAXE, Items.NETHERITE_SWORD);
 
 			map.put("minecraft/difficulty_config/weapon/vanilla", weapon);
 		}

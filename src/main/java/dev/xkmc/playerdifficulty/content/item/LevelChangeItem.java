@@ -25,7 +25,7 @@ public class LevelChangeItem extends LevelCheckItem {
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		if (entity instanceof ServerPlayer player) {
 			DifficultyCap playerLevel = DifficultyCap.get(player);
-			float next = playerLevel.getDifficultyValue() + change;
+			float next = playerLevel.getDifficultyValue() + change * DifficultyConfig.COMMON.altDifficulty.get();
 			playerLevel.setDifficultyValue(Mth.clamp(next, 0, DifficultyConfig.COMMON.maxDifficulty.get()));
 			playerLevel.syncToClient();
 		}

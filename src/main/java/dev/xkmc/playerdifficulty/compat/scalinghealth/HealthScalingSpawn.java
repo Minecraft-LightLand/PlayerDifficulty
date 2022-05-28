@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.silentchaos512.scalinghealth.capability.DifficultySourceCapability;
 import net.silentchaos512.scalinghealth.capability.IDifficultySource;
 import net.silentchaos512.scalinghealth.capability.IPlayerData;
+import net.silentchaos512.scalinghealth.client.ClientHandler;
 
 import java.util.Optional;
 
@@ -23,6 +24,9 @@ public class HealthScalingSpawn {
 
 		@Override
 		public float getDifficultyValue() {
+			if(player.level.isClientSide()){
+				return ClientHandler.playerDifficulty * getFactor();
+			}
 			return cap.getDifficulty() * getFactor();
 		}
 

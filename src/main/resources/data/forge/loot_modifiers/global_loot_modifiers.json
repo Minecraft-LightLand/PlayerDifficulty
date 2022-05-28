@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "entries": [
+	"playerdifficulty:difficulty",
+	"playerdifficulty:champion_affix_loot"
+  ]
+}
