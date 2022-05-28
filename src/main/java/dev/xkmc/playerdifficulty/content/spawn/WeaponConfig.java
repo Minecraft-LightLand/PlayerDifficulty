@@ -72,6 +72,7 @@ public class WeaponConfig extends BaseConfig {
 	public void fillEntity(Mob entity, float level, Random r) {
 		double weapon_chance = DifficultyConfig.COMMON.weaponChanceFactor.get();
 		double enchant_factor = DifficultyConfig.COMMON.enchantLevelFactor.get();
+		double dropChance = DifficultyConfig.COMMON.dropChance.get();
 		EquipmentSlot slot = EquipmentSlot.MAINHAND;
 		if (!entity.getItemBySlot(slot).isEmpty())
 			return;
@@ -83,7 +84,7 @@ public class WeaponConfig extends BaseConfig {
 			return;
 		ItemStack stack = getItemStack(type, level, (int) (level * enchant_factor), r);
 		entity.setItemSlot(slot, stack);
-		entity.setDropChance(slot, 1);
+		entity.setDropChance(slot, (float) dropChance);
 
 	}
 

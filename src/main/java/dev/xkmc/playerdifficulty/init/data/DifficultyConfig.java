@@ -14,6 +14,8 @@ public class DifficultyConfig {
 		public final ForgeConfigSpec.DoubleValue enchantLevelFactor;
 		public final ForgeConfigSpec.DoubleValue armorChanceFactor;
 		public final ForgeConfigSpec.DoubleValue weaponChanceFactor;
+		public final ForgeConfigSpec.DoubleValue dropChance;
+
 
 		public final ForgeConfigSpec.BooleanValue championEnable;
 		public final ForgeConfigSpec.IntValue championsTierFactor;
@@ -43,6 +45,9 @@ public class DifficultyConfig {
 			weaponChanceFactor = builder.comment("weapon spawn chance factor")
 					.worldRestart()
 					.defineInRange("weaponChanceFactor", 0.04,0.001,  1);
+			dropChance = builder.comment("equipment drop chance")
+					.worldRestart()
+					.defineInRange("dropChance", 0.085,0.085,  1);
 			builder.pop();
 
 			builder.push("champion");

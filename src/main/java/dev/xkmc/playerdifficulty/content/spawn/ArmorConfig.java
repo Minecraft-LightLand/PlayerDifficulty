@@ -75,6 +75,7 @@ public class ArmorConfig extends BaseConfig {
 			return;
 		double enchant_factor = DifficultyConfig.COMMON.enchantLevelFactor.get();
 		double armor_chance = DifficultyConfig.COMMON.armorChanceFactor.get();
+		double dropChance = DifficultyConfig.COMMON.dropChance.get();
 		for (EquipmentSlot slot : EquipmentSlot.values()) {
 			if (slot.getType() != EquipmentSlot.Type.ARMOR)
 				continue;
@@ -84,7 +85,7 @@ public class ArmorConfig extends BaseConfig {
 				continue;
 			ItemStack stack = getItemStack(slot, entity, level, (int) (level * enchant_factor), r);
 			entity.setItemSlot(slot, stack);
-			entity.setDropChance(slot, 1);
+			entity.setDropChance(slot, (float) dropChance);
 		}
 	}
 
