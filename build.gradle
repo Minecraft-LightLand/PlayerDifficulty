@@ -125,8 +125,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
-    implementation fg.deobf('dev.xkmc.l2library:l2library:0.0.7')
-    implementation fg.deobf('dev.xkmc.l2backpack:l2backpack:0.0.2')
+    implementation fg.deobf('dev.xkmc.l2library:l2library:0.0.8')
+    runtimeOnly fg.deobf('dev.xkmc.l2backpack:l2backpack:0.0.3')
     implementation fg.deobf('dev.local.twilightforest:twilightforest:4.1.1028')
 
     implementation fg.deobf('curse.maven:placebo-283644:3781199')

@@ -11,6 +11,10 @@ public class DifficultyConfig {
 
 		public final ForgeConfigSpec.IntValue maxDifficulty;
 
+		public final ForgeConfigSpec.DoubleValue enchantLevelFactor;
+		public final ForgeConfigSpec.DoubleValue armorChanceFactor;
+		public final ForgeConfigSpec.DoubleValue weaponChanceFactor;
+
 		public final ForgeConfigSpec.BooleanValue championEnable;
 		public final ForgeConfigSpec.IntValue championsTierFactor;
 		public final ForgeConfigSpec.IntValue championsTierSeparation;
@@ -27,6 +31,18 @@ public class DifficultyConfig {
 			maxDifficulty = builder.comment("Maximum Difficulty")
 					.worldRestart()
 					.defineInRange("maxDifficulty", 100, 5, 10000);
+			builder.pop();
+
+			builder.push("equipment");
+			enchantLevelFactor = builder.comment("Enchantment level factor")
+					.worldRestart()
+					.defineInRange("enchantLevelFactor", 0.6,0.001,  1);
+			armorChanceFactor = builder.comment("armor spawn chance factor")
+					.worldRestart()
+					.defineInRange("armorChanceFactor", 0.02,0.001,  1);
+			weaponChanceFactor = builder.comment("weapon spawn chance factor")
+					.worldRestart()
+					.defineInRange("weaponChanceFactor", 0.04,0.001,  1);
 			builder.pop();
 
 			builder.push("champion");

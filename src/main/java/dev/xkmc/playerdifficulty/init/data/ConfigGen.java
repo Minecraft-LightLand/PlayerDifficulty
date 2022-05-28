@@ -4,9 +4,7 @@ import dev.xkmc.l2library.network.BaseConfig;
 import dev.xkmc.l2library.network.ConfigDataProvider;
 import dev.xkmc.playerdifficulty.compat.CompatManager;
 import dev.xkmc.playerdifficulty.content.spawn.ArmorConfig;
-import dev.xkmc.playerdifficulty.content.spawn.GeneralConfig;
 import dev.xkmc.playerdifficulty.content.spawn.WeaponConfig;
-import dev.xkmc.playerdifficulty.init.PlayerDifficulty;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -21,18 +19,6 @@ public class ConfigGen extends ConfigDataProvider {
 
 	@Override
 	public void add(Map<String, BaseConfig> map) {
-		// general config
-		{
-			GeneralConfig general = new GeneralConfig();
-			general.armor_chance = 0.04f;
-			general.enchant_factor = 0.6f;
-			general.weapon_chance.put(WeaponConfig.Type.MEELEE, 0.04);
-			general.weapon_chance.put(WeaponConfig.Type.BOW, 0.04);
-			general.weapon_chance.put(WeaponConfig.Type.CROSSBOW, 0.04);
-			general.weapon_chance.put(WeaponConfig.Type.TRIDENT, 0.01);
-			map.put(PlayerDifficulty.MODID + "/difficulty_config/general", general);
-		}
-
 		// vanilla armor config
 		{
 			ArmorConfig armor = new ArmorConfig();
@@ -66,21 +52,22 @@ public class ConfigGen extends ConfigDataProvider {
 		{
 			WeaponConfig weapon = new WeaponConfig();
 
-			weapon.types.put(EntityType.ZOMBIE, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.ZOMBIE_VILLAGER, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.ZOMBIFIED_PIGLIN, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.DROWNED, WeaponConfig.Type.TRIDENT);
-			weapon.types.put(EntityType.HUSK, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.SKELETON, WeaponConfig.Type.BOW);
-			weapon.types.put(EntityType.WITHER_SKELETON, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.STRAY, WeaponConfig.Type.BOW);
-			weapon.types.put(EntityType.PIGLIN, WeaponConfig.Type.CROSSBOW);
-			weapon.types.put(EntityType.PIGLIN_BRUTE, WeaponConfig.Type.MEELEE);
-			weapon.types.put(EntityType.PILLAGER, WeaponConfig.Type.CROSSBOW);
-			weapon.types.put(EntityType.VINDICATOR, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.ZOMBIE, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.ZOMBIE_VILLAGER, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.ZOMBIFIED_PIGLIN, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.DROWNED, WeaponConfig.Type.TRIDENT);
+			weapon.addType(EntityType.HUSK, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.SKELETON, WeaponConfig.Type.BOW);
+			weapon.addType(EntityType.WITHER_SKELETON, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.STRAY, WeaponConfig.Type.BOW);
+			weapon.addType(EntityType.PIGLIN, WeaponConfig.Type.CROSSBOW);
+			weapon.addType(EntityType.PIGLIN, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.PIGLIN_BRUTE, WeaponConfig.Type.MEELEE);
+			weapon.addType(EntityType.PILLAGER, WeaponConfig.Type.CROSSBOW);
+			weapon.addType(EntityType.VINDICATOR, WeaponConfig.Type.MEELEE);
 
-			weapon.addItem(WeaponConfig.Type.BOW, Items.BOW, 0, 1000);
-			weapon.addItem(WeaponConfig.Type.CROSSBOW, Items.CROSSBOW, 0, 1000);
+			weapon.addItem(WeaponConfig.Type.BOW, Items.BOW, 0, 400);
+			weapon.addItem(WeaponConfig.Type.CROSSBOW, Items.CROSSBOW, 0, 400);
 			weapon.addItem(WeaponConfig.Type.TRIDENT, Items.TRIDENT, 10, 1000);
 			weapon.addItems(WeaponConfig.Type.MEELEE, 10, 150, Items.IRON_AXE, Items.IRON_PICKAXE, Items.IRON_SWORD);
 			weapon.addItems(WeaponConfig.Type.MEELEE, 10, 100, Items.GOLDEN_AXE, Items.GOLDEN_PICKAXE, Items.GOLDEN_SWORD);

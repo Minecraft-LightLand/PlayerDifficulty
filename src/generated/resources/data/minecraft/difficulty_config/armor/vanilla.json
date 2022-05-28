@@ -103,19 +103,19 @@
     }
   ],
   "types": [
-    "minecraft:drowned",
-    "minecraft:zombie_villager",
-    "minecraft:husk",
-    "minecraft:piglin_brute",
-    "minecraft:skeleton",
-    "minecraft:stray",
-    "minecraft:zombie",
-    "minecraft:wither_skeleton",
-    "minecraft:vindicator",
-    "minecraft:evoker",
     "minecraft:zombified_piglin",
-    "minecraft:pillager",
+    "minecraft:evoker",
+    "minecraft:skeleton",
     "minecraft:illusioner",
+    "minecraft:drowned",
+    "minecraft:piglin_brute",
+    "minecraft:wither_skeleton",
+    "minecraft:stray",
+    "minecraft:vindicator",
+    "minecraft:husk",
+    "minecraft:zombie_villager",
+    "minecraft:pillager",
+    "minecraft:zombie",
     "minecraft:piglin"
   ]
 }

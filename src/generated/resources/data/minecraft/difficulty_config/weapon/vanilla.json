@@ -1,27 +1,6 @@
 {
   "_class": "dev.xkmc.playerdifficulty.content.spawn.WeaponConfig",
   "items": {
-    "TRIDENT": [
-      {
-        "item": "minecraft:trident",
-        "level": 10.0,
-        "weight": 1000
-      }
-    ],
-    "CROSSBOW": [
-      {
-        "item": "minecraft:crossbow",
-        "level": 0.0,
-        "weight": 1000
-      }
-    ],
-    "BOW": [
-      {
-        "item": "minecraft:bow",
-        "level": 0.0,
-        "weight": 1000
-      }
-    ],
     "MEELEE": [
       {
         "item": "minecraft:iron_axe",
@@ -83,20 +62,66 @@
         "level": 40.0,
         "weight": 25
       }
+    ],
+    "CROSSBOW": [
+      {
+        "item": "minecraft:crossbow",
+        "level": 0.0,
+        "weight": 400
+      }
+    ],
+    "TRIDENT": [
+      {
+        "item": "minecraft:trident",
+        "level": 10.0,
+        "weight": 1000
+      }
+    ],
+    "BOW": [
+      {
+        "item": "minecraft:bow",
+        "level": 0.0,
+        "weight": 400
+      }
     ]
   },
   "types": {
-    "minecraft:drowned": "TRIDENT",
-    "minecraft:zombie_villager": "MEELEE",
-    "minecraft:husk": "MEELEE",
-    "minecraft:piglin_brute": "MEELEE",
-    "minecraft:skeleton": "BOW",
-    "minecraft:zombified_piglin": "MEELEE",
-    "minecraft:stray": "BOW",
-    "minecraft:pillager": "CROSSBOW",
-    "minecraft:zombie": "MEELEE",
-    "minecraft:piglin": "CROSSBOW",
-    "minecraft:wither_skeleton": "MEELEE",
-    "minecraft:vindicator": "MEELEE"
+    "minecraft:stray": [
+      "BOW"
+    ],
+    "minecraft:vindicator": [
+      "MEELEE"
+    ],
+    "minecraft:zombified_piglin": [
+      "MEELEE"
+    ],
+    "minecraft:husk": [
+      "MEELEE"
+    ],
+    "minecraft:pillager": [
+      "CROSSBOW"
+    ],
+    "minecraft:skeleton": [
+      "BOW"
+    ],
+    "minecraft:zombie_villager": [
+      "MEELEE"
+    ],
+    "minecraft:zombie": [
+      "MEELEE"
+    ],
+    "minecraft:drowned": [
+      "TRIDENT"
+    ],
+    "minecraft:piglin_brute": [
+      "MEELEE"
+    ],
+    "minecraft:piglin": [
+      "MEELEE",
+      "CROSSBOW"
+    ],
+    "minecraft:wither_skeleton": [
+      "MEELEE"
+    ]
   }
 }
