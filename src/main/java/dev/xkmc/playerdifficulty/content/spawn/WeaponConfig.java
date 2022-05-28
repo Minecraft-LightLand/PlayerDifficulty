@@ -2,6 +2,7 @@ package dev.xkmc.playerdifficulty.content.spawn;
 
 import dev.xkmc.l2library.network.BaseConfig;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import dev.xkmc.playerdifficulty.network.NetworkManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -10,10 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @SerialClass
 public class WeaponConfig extends BaseConfig {
@@ -23,8 +21,8 @@ public class WeaponConfig extends BaseConfig {
 	public static WeaponConfig getInstance() {
 		if (cache != null) return cache;
 		List<WeaponConfig> configs = NetworkManager.getConfigs("weapon").map(e -> (WeaponConfig) e.getValue()).toList();
-		HashMap<Type, ArrayList<Entry>> map = BaseConfig.collectMap(configs, e -> e.items);
-		HashMap<EntityType<?>, Type> types = BaseConfig.collectMap(configs, e -> e.types);
+		HashMap<Type, ArrayList<Entry>> map = BaseConfig.collectMap(configs, e -> e.items, ArrayList::new, ArrayList::addAll);
+		HashMap<EntityType<?>, HashSet<Type>> types = BaseConfig.collectMap(configs, e -> e.types, HashSet::new, HashSet::addAll);
 		WeaponConfig ans = new WeaponConfig();
 		ans.items = map;
 		ans.types = types;
@@ -33,13 +31,15 @@ public class WeaponConfig extends BaseConfig {
 
 	}
 
-	public Item getItem(Type type, float level, Random r) {
+	public Item getItem(HashSet<Type> types, float level, Random r) {
 		List<Entry> list = new ArrayList<>();
 		int sum = 0;
-		for (Entry entry : items.get(type)) {
-			if (entry.level <= level) {
-				list.add(entry);
-				sum += entry.weight;
+		for (Type type : types) {
+			for (Entry entry : items.get(type)) {
+				if (entry.level <= level) {
+					list.add(entry);
+					sum += entry.weight;
+				}
 			}
 		}
 		if (sum == 0) {
@@ -55,7 +55,7 @@ public class WeaponConfig extends BaseConfig {
 		return null;
 	}
 
-	public ItemStack getItemStack(Type type, float level, int enchant, Random r) {
+	public ItemStack getItemStack(HashSet<Type> type, float level, int enchant, Random r) {
 		Item item = getItem(type, level, r);
 		if (item == null) {
 			return ItemStack.EMPTY;
@@ -65,24 +65,26 @@ public class WeaponConfig extends BaseConfig {
 		return stack;
 	}
 
-	private Type getType(Mob entity) {
+	private HashSet<Type> getType(Mob entity) {
 		return types.get(entity.getType());
 	}
 
 	public void fillEntity(Mob entity, float level, Random r) {
-		GeneralConfig gen = GeneralConfig.getInstance();
+		double weapon_chance = DifficultyConfig.COMMON.weaponChanceFactor.get();
+		double enchant_factor = DifficultyConfig.COMMON.enchantLevelFactor.get();
+		double dropChance = DifficultyConfig.COMMON.dropChance.get();
 		EquipmentSlot slot = EquipmentSlot.MAINHAND;
 		if (!entity.getItemBySlot(slot).isEmpty())
 			return;
-		Type type = getType(entity);
+		HashSet<Type> type = getType(entity);
 		if (type == null) {
 			return;
 		}
-		if (r.nextDouble() > gen.weapon_chance.get(type) * level)
+		if (r.nextDouble() > weapon_chance * level)
 			return;
-		ItemStack stack = getItemStack(type, level, (int) (level * gen.enchant_factor), r);
+		ItemStack stack = getItemStack(type, level, (int) (level * enchant_factor), r);
 		entity.setItemSlot(slot, stack);
-		entity.setDropChance(slot, 1);
+		entity.setDropChance(slot, (float) dropChance);
 
 	}
 
@@ -90,7 +92,7 @@ public class WeaponConfig extends BaseConfig {
 	public HashMap<Type, ArrayList<Entry>> items = new HashMap<>();
 
 	@SerialClass.SerialField
-	public HashMap<EntityType<?>, Type> types = new HashMap<>();
+	public HashMap<EntityType<?>, HashSet<Type>> types = new HashMap<>();
 
 	public void addItem(Type type, Item item, float level, int weight) {
 		items.computeIfAbsent(type, k -> new ArrayList<>()).add(new Entry(item, level, weight));
@@ -100,6 +102,10 @@ public class WeaponConfig extends BaseConfig {
 		for (Item i : items) {
 			addItem(type, i, level, weight);
 		}
+	}
+
+	public void addType(EntityType<?> entity, Type type) {
+		types.computeIfAbsent(entity, k -> new HashSet<>()).add(type);
 	}
 
 	@SerialClass

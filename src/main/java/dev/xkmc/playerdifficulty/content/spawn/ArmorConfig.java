@@ -2,6 +2,7 @@ package dev.xkmc.playerdifficulty.content.spawn;
 
 import dev.xkmc.l2library.network.BaseConfig;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import dev.xkmc.playerdifficulty.network.NetworkManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -72,17 +73,19 @@ public class ArmorConfig extends BaseConfig {
 	public void fillEntity(Mob entity, float level, Random r) {
 		if (!fit(entity))
 			return;
-		GeneralConfig gen = GeneralConfig.getInstance();
+		double enchant_factor = DifficultyConfig.COMMON.enchantLevelFactor.get();
+		double armor_chance = DifficultyConfig.COMMON.armorChanceFactor.get();
+		double dropChance = DifficultyConfig.COMMON.dropChance.get();
 		for (EquipmentSlot slot : EquipmentSlot.values()) {
 			if (slot.getType() != EquipmentSlot.Type.ARMOR)
 				continue;
 			if (!entity.getItemBySlot(slot).isEmpty())
 				continue;
-			if (r.nextDouble() > gen.armor_chance * level)
+			if (r.nextDouble() > armor_chance * level)
 				continue;
-			ItemStack stack = getItemStack(slot, entity, level, (int) (level * gen.enchant_factor), r);
+			ItemStack stack = getItemStack(slot, entity, level, (int) (level * enchant_factor), r);
 			entity.setItemSlot(slot, stack);
-			entity.setDropChance(slot, 1);
+			entity.setDropChance(slot, (float) dropChance);
 		}
 	}
 
