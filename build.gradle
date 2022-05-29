@@ -131,7 +131,7 @@ dependencies {
     implementation fg.deobf('curse.maven:scaling-health-248027:3788314')
     implementation fg.deobf('curse.maven:silent-lib-242998:3708359')
 
-    compileOnly fg.deobf('curse.maven:champions-307152:3783685')
+    implementation fg.deobf('curse.maven:champions-307152:3783685')
     compileOnly fg.deobf('dev.local.twilightforest:twilightforest:4.1.1028')
     compileOnly fg.deobf('curse.maven:placebo-283644:3781199')
     compileOnly fg.deobf('curse.maven:apotheosis-313970:3781524')
