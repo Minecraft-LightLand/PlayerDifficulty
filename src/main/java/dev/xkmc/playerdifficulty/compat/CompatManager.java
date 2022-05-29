@@ -1,12 +1,14 @@
 package dev.xkmc.playerdifficulty.compat;
 
 import dev.xkmc.l2library.network.BaseConfig;
+import dev.xkmc.l2library.repack.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.playerdifficulty.compat.apotheosis.AffixAttach;
+import dev.xkmc.playerdifficulty.compat.champions.ChampionLootGen;
 import dev.xkmc.playerdifficulty.compat.champions.SpawnReset;
 import dev.xkmc.playerdifficulty.compat.scalinghealth.HealthScalingSpawn;
+import dev.xkmc.playerdifficulty.compat.twilightforest.TFGen;
 import dev.xkmc.playerdifficulty.content.capability.DifficultyCap;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
-import dev.xkmc.playerdifficulty.compat.twilightforest.TFGen;
 import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -46,11 +48,16 @@ public class CompatManager {
 	}
 
 	public static void onConfigGen(Map<String, BaseConfig> map) {
-		if (ModList.get().isLoaded("twilightforest")){
+		if (ModList.get().isLoaded("twilightforest")) {
 			TFGen.onConfigGen(map);
 		}
 	}
 
+	public static void onLootGen(RegistrateLootTableProvider pvd) {
+		if (ModList.get().isLoaded("champions")) {
+			ChampionLootGen.genLoot(pvd);
+		}
+	}
 
 	public record PDDifficultyCap(PlayerLevel cap) implements DifficultyCap {
 

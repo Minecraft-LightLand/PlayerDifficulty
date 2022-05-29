@@ -8,7 +8,7 @@ import top.theillusivec4.champions.common.loot.LootItemChampionPropertyCondition
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ChampionDataGen {
+public class ChampionDataGenHelper {
 
 	public static LootItemChampionPropertyCondition get(MinMaxBounds.Ints tier, Set<IAffix> set, MinMaxBounds.Ints match, MinMaxBounds.Ints count) {
 		return ChampionDataGenAccessor.CHAMPION_BUILDER.create(LootContext.EntityTarget.THIS,

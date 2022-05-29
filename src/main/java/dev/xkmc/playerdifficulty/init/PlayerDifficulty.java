@@ -3,7 +3,6 @@ package dev.xkmc.playerdifficulty.init;
 import dev.xkmc.l2library.base.LcyRegistrate;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2library.serial.handler.Handlers;
-import dev.xkmc.l2library.serial.handler.RLClassHandler;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
 import dev.xkmc.playerdifficulty.events.MobSpawnEventHandler;
 import dev.xkmc.playerdifficulty.init.data.ConfigGen;
@@ -11,7 +10,6 @@ import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import dev.xkmc.playerdifficulty.init.data.LangData;
 import dev.xkmc.playerdifficulty.init.data.LootGen;
 import dev.xkmc.playerdifficulty.network.NetworkManager;
-import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,7 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.network.NetworkConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -61,6 +59,8 @@ public class PlayerDifficulty {
 	}
 
 	public PlayerDifficulty() {
+		LOGGER.info("Player Difficulty Loading");
+		NetworkConstants.init();
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
 		registerModBusEvents(bus);
