@@ -3,6 +3,7 @@ package dev.xkmc.playerdifficulty.init;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.playerdifficulty.content.enchantments.core.BaseEnchantment;
 import dev.xkmc.playerdifficulty.content.enchantments.sword.*;
+import dev.xkmc.playerdifficulty.content.enchantments.tool.Reach;
 import dev.xkmc.playerdifficulty.content.enchantments.tool.Remnant;
 import dev.xkmc.playerdifficulty.content.enchantments.tool.Robust;
 import dev.xkmc.playerdifficulty.content.enchantments.tool.ToolEnchant;
@@ -19,9 +20,12 @@ public class PDEnchantments {
 	public static final RegistryEntry<StackingDamage> STACK_DMG = reg("stacking_damage", () -> new StackingDamage(SwordEnchant.STACK_DMG));
 	public static final RegistryEntry<TracingDamage> TRACK_ENT = reg("tracing_damage", () -> new TracingDamage(SwordEnchant.TRACK_ENT));
 	public static final RegistryEntry<Fragile> FRAGILE = reg("fragile", () -> new Fragile(SwordEnchant.FRAGILE));
+	public static final RegistryEntry<LightSwing> LIGHT_SWING = reg("light_swing", () -> new LightSwing(SwordEnchant.LIGHT_SWING));
+	public static final RegistryEntry<HeavySwing> HEAVY_SWING = reg("heavy_swing", () -> new HeavySwing(SwordEnchant.HEAVY_SWING));
 
 	public static final RegistryEntry<Remnant> REMNANT = reg("remnant", () -> new Remnant(ToolEnchant.REMNANT));
 	public static final RegistryEntry<Robust> ROBUST = reg("robust", () -> new Robust(ToolEnchant.ROBUST));
+	public static final RegistryEntry<Reach> REACH = reg("reach", () -> new Reach(ToolEnchant.REACH));
 
 	public static void register() {
 

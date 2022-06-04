@@ -1,4 +1,4 @@
-package dev.xkmc.playerdifficulty.content.enchantments.tool;
+package dev.xkmc.playerdifficulty.content.enchantments.core;
 
 public interface DurabilityEnchantment {
 

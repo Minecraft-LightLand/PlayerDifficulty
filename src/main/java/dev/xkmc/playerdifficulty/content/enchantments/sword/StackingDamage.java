@@ -2,6 +2,7 @@ package dev.xkmc.playerdifficulty.content.enchantments.sword;
 
 import dev.xkmc.playerdifficulty.content.enchantments.core.EnchConfig;
 import dev.xkmc.playerdifficulty.events.AttackEventHandler;
+import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
@@ -9,7 +10,7 @@ import java.util.function.Supplier;
 
 public class StackingDamage extends SwordEnchant {
 
-	public static final Supplier<Double> PERCENT_PER_LEVEL = () -> 0.05;
+	public static final Supplier<Double> PERCENT_PER_LEVEL = DifficultyConfig.COMMON.stackingRatio::get;
 
 	private static final String KEY = "StackedDamage";
 

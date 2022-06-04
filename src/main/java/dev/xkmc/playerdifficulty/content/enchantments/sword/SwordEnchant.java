@@ -19,12 +19,14 @@ import java.util.Random;
 @ParametersAreNonnullByDefault
 public class SwordEnchant extends BaseEnchantment {
 
-	public static final EnchConfig ANTI_MAGIC = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.PENETRATION, Type.ORANGE, 5);
-	public static final EnchConfig SOUL_SLASH = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.PENETRATION, Type.ORANGE, 5);
-	public static final EnchConfig STACK_DMG = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.STACKING, Type.ORANGE, 5);
-	public static final EnchConfig TRACK_ENT = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.STACKING, Type.ORANGE, 5);
+	public static final EnchConfig ANTI_MAGIC = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.PENETRATION, Type.ORANGE, 3);
+	public static final EnchConfig SOUL_SLASH = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.PENETRATION, Type.ORANGE, 3);
+	public static final EnchConfig STACK_DMG = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.STACKING, Type.ORANGE, 3);
+	public static final EnchConfig TRACK_ENT = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.STACKING, Type.ORANGE, 3);
 	public static final EnchConfig FRAGILE = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.NONE, Type.PURPLE, 5,
-			() -> Enchantments.SHARPNESS, () -> Enchantments.UNBREAKING, PDEnchantments.ROBUST::get);
+			() -> Enchantments.UNBREAKING, PDEnchantments.ROBUST::get);
+	public static final EnchConfig LIGHT_SWING = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.WEIGHT, Type.PURPLE, 5);
+	public static final EnchConfig HEAVY_SWING = new EnchConfig(Rarity.VERY_RARE, EnchantmentCategory.WEAPON, ConflictGroup.WEIGHT, Type.PURPLE, 5);
 
 	public static final Random RANDOM = new Random();
 

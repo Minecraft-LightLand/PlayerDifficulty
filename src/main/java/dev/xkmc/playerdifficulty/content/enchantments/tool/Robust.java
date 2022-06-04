@@ -1,5 +1,6 @@
 package dev.xkmc.playerdifficulty.content.enchantments.tool;
 
+import dev.xkmc.playerdifficulty.content.enchantments.core.DurabilityEnchantment;
 import dev.xkmc.playerdifficulty.content.enchantments.core.EnchConfig;
 
 public class Robust extends ToolEnchant implements DurabilityEnchantment {

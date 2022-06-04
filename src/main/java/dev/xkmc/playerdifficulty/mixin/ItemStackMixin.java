@@ -2,7 +2,7 @@ package dev.xkmc.playerdifficulty.mixin;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import dev.xkmc.playerdifficulty.content.enchantments.tool.DurabilityEnchantment;
+import dev.xkmc.playerdifficulty.content.enchantments.core.DurabilityEnchantment;
 import dev.xkmc.playerdifficulty.init.PDEnchantments;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -82,9 +82,11 @@ public abstract class ItemStackMixin {
 	@Inject(at = @At("HEAD"), method = "getAttributeModifiers", cancellable = true)
 	public void getDefaultModifiers(EquipmentSlot slot, CallbackInfoReturnable<Multimap<Attribute, AttributeModifier>> cir) {
 		ItemStack self = (ItemStack) (Object) this;
-		if (EnchantmentHelper.getItemEnchantmentLevel(PDEnchantments.REMNANT.get(), self) > 0) {//TODO
-			if (self.getDamageValue() >= self.getMaxDamage()) {
-				cir.setReturnValue(HashMultimap.create());
+		if (self.isEnchanted()) {
+			if (EnchantmentHelper.getItemEnchantmentLevel(PDEnchantments.REMNANT.get(), self) > 0) {//TODO
+				if (self.getDamageValue() >= self.getMaxDamage()) {
+					cir.setReturnValue(HashMultimap.create());
+				}
 			}
 		}
 	}
