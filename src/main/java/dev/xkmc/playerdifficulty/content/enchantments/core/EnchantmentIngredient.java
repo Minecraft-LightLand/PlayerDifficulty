@@ -25,6 +25,15 @@ public class EnchantmentIngredient extends AbstractIngredient {
 	@SerialClass.SerialField
 	public int minLevel;
 
+	@Deprecated
+	public EnchantmentIngredient() {
+
+	}
+
+	private EnchantmentIngredient validate() {
+		return new EnchantmentIngredient(enchantment, minLevel);
+	}
+
 	public EnchantmentIngredient(Enchantment enchantment, int minLevel) {
 		super(Stream.of(new Ingredient.ItemValue(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, minLevel)))));
 		this.enchantment = enchantment;
@@ -32,7 +41,7 @@ public class EnchantmentIngredient extends AbstractIngredient {
 	}
 
 	public boolean test(ItemStack stack) {
-		return EnchantmentHelper.getItemEnchantmentLevel(this.enchantment, stack) >= this.minLevel;
+		return EnchantmentHelper.getEnchantments(stack).getOrDefault(this.enchantment, 0) >= this.minLevel;
 	}
 
 	public boolean isSimple() {
@@ -54,11 +63,11 @@ public class EnchantmentIngredient extends AbstractIngredient {
 		}
 
 		public EnchantmentIngredient parse(FriendlyByteBuf buffer) {
-			return PacketCodec.from(buffer, EnchantmentIngredient.class, null);
+			return PacketCodec.from(buffer, EnchantmentIngredient.class, null).validate();
 		}
 
 		public EnchantmentIngredient parse(JsonObject json) {
-			return JsonCodec.from(json, EnchantmentIngredient.class, null);
+			return JsonCodec.from(json, EnchantmentIngredient.class, null).validate();
 		}
 
 		public void write(FriendlyByteBuf buffer, EnchantmentIngredient ingredient) {

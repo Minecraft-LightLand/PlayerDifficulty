@@ -69,17 +69,18 @@ public class BaseEnchantment extends Enchantment {
 
 	@Override
 	public Component getFullname(int lv) {
-		MutableComponent mutablecomponent = new TranslatableComponent(this.getDescriptionId());
-		if (this.isCurse()) {
-			mutablecomponent.withStyle(ChatFormatting.RED);
-		} else {
-			mutablecomponent.withStyle(ChatFormatting.GRAY);
-		}
+		MutableComponent component = new TranslatableComponent(this.getDescriptionId());
 
 		if (lv != 1 || this.getMaxLevel() != 1) {
-			mutablecomponent.append(" ").append(new TranslatableComponent("enchantment.level." + lv));
+			component.append(" ").append(new TranslatableComponent("enchantment.level." + lv));
 		}
 
-		return mutablecomponent;
+		if (config.type() == Type.ORANGE) {
+			component.withStyle(ChatFormatting.GOLD);
+		} else if (config.type() == Type.PURPLE) {
+			component.withStyle(ChatFormatting.DARK_PURPLE);
+		}
+
+		return component;
 	}
 }
