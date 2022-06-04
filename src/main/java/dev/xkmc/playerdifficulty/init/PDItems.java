@@ -36,7 +36,7 @@ public class PDItems {
 		FoodProperties prop = new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().build();
 		CHECK = PlayerDifficulty.REGISTRATE.item("check", LevelCheckItem::new).register();
 		UP = PlayerDifficulty.REGISTRATE.item("up", p -> new LevelChangeItem(p.food(prop), 1)).register();
-		DOWN = PlayerDifficulty.REGISTRATE.item("down", p -> new LevelChangeItem(p.food(prop), 1)).register();
+		DOWN = PlayerDifficulty.REGISTRATE.item("down", p -> new LevelChangeItem(p.food(prop), -1)).register();
 	}
 
 	public static void register() {

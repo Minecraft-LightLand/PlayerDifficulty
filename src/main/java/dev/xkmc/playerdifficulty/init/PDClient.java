@@ -4,7 +4,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-public class DPClient {
+public class PDClient {
 
 	public static void onCtorClient(IEventBus bus, IEventBus eventBus) {
 	}

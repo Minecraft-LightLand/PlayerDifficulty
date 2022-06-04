@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "refmap": "playerdifficulty.refmap.json",
   "mixins": [
+	"ItemStackMixin"
   ],
   "client": [
   ],

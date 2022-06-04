@@ -12,11 +12,17 @@ public class DifficultyConfig {
 		public final ForgeConfigSpec.IntValue maxDifficulty;
 		public final ForgeConfigSpec.IntValue altDifficulty;
 
+		public final ForgeConfigSpec.DoubleValue antiMagicChance;
+		public final ForgeConfigSpec.DoubleValue soulSlashChance;
+		public final ForgeConfigSpec.DoubleValue stackingRatio;
+		public final ForgeConfigSpec.DoubleValue tracingRatio;
+		public final ForgeConfigSpec.DoubleValue fragileDamageFactor;
+		public final ForgeConfigSpec.DoubleValue fragileDurabilityFactor;
+
 		public final ForgeConfigSpec.DoubleValue enchantLevelFactor;
 		public final ForgeConfigSpec.DoubleValue armorChanceFactor;
 		public final ForgeConfigSpec.DoubleValue weaponChanceFactor;
 		public final ForgeConfigSpec.DoubleValue dropChance;
-
 
 		public final ForgeConfigSpec.BooleanValue championEnable;
 		public final ForgeConfigSpec.IntValue championsTierFactor;
@@ -37,15 +43,30 @@ public class DifficultyConfig {
 					.defineInRange("altDifficulty", 10, 1, 10000);
 			builder.pop();
 
+			builder.push("enchantments");
+			antiMagicChance = builder.comment("Anti Magic chance")
+					.defineInRange("antiMagicChance", 0.1, 0, 1);
+			soulSlashChance = builder.comment("Soul Slash chance")
+					.defineInRange("soulSlashChance", 0.1, 0, 1);
+			stackingRatio = builder.comment("Stacking damage enchantment damage increment multiplier")
+					.defineInRange("stackingRatio", 0.1, 0, 1);
+			tracingRatio = builder.comment("Tracing damage enchantment increment base multiplier")
+					.defineInRange("tracingRatio", 0.02, 0, 1);
+			fragileDamageFactor = builder.comment("Fragile enchantment damage multiplier")
+					.defineInRange("fragileDamageFactor", 0.1, 0, 1);
+			fragileDurabilityFactor = builder.comment("Fragile enchantment durability multiplier")
+					.defineInRange("fragileDurabilityFactor", 0.5, 0, 100);
+			builder.pop();
+
 			builder.push("equipment");
 			enchantLevelFactor = builder.comment("Enchantment level factor")
-					.defineInRange("enchantLevelFactor", 0.4,0.001,  1);
+					.defineInRange("enchantLevelFactor", 0.4, 0.001, 1);
 			armorChanceFactor = builder.comment("armor spawn chance factor")
-					.defineInRange("armorChanceFactor", 0.01,0.001,  1);
+					.defineInRange("armorChanceFactor", 0.01, 0.001, 1);
 			weaponChanceFactor = builder.comment("weapon spawn chance factor")
-					.defineInRange("weaponChanceFactor", 0.02,0.001,  1);
+					.defineInRange("weaponChanceFactor", 0.02, 0.001, 1);
 			dropChance = builder.comment("equipment drop chance")
-					.defineInRange("dropChance", 0.085,0.085,  1);
+					.defineInRange("dropChance", 0.2, 0.085, 1);
 			builder.pop();
 
 			builder.push("champion");
