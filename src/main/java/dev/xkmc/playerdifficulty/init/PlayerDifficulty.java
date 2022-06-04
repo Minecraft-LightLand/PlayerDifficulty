@@ -4,8 +4,6 @@ import dev.xkmc.l2library.base.LcyRegistrate;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2library.serial.handler.Handlers;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
-import dev.xkmc.playerdifficulty.content.enchantments.core.EnchantmentIngredient;
-import dev.xkmc.playerdifficulty.events.AttackEventHandler;
 import dev.xkmc.playerdifficulty.events.MobSpawnEventHandler;
 import dev.xkmc.playerdifficulty.init.data.ConfigGen;
 import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
@@ -17,7 +15,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -42,7 +39,6 @@ public class PlayerDifficulty {
 
 	private static void registerRegistrates(IEventBus bus) {
 		PDItems.register();
-		PDEnchantments.register();
 		Handlers.register();
 		NetworkManager.register();
 		DifficultyConfig.init();
@@ -55,7 +51,6 @@ public class PlayerDifficulty {
 
 	private static void registerForgeEvents() {
 		MinecraftForge.EVENT_BUS.register(MobSpawnEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(AttackEventHandler.class);
 	}
 
 	private static void registerModBusEvents(IEventBus bus) {
@@ -75,7 +70,6 @@ public class PlayerDifficulty {
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
 		registerModBusEvents(bus);
-		bus.register(this);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> PDClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
 		registerRegistrates(bus);
 		registerForgeEvents();
@@ -94,9 +88,5 @@ public class PlayerDifficulty {
 	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {
 	}
 
-	@SubscribeEvent
-	public void registerRecipeSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
-		CraftingHelper.register(new ResourceLocation(MODID, "enchantment"), EnchantmentIngredient.Serializer.INSTANCE);
-	}
 
 }
