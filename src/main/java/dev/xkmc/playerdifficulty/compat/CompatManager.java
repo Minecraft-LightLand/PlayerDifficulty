@@ -5,6 +5,7 @@ import dev.xkmc.l2library.repack.registrate.providers.loot.RegistrateLootTablePr
 import dev.xkmc.playerdifficulty.compat.apotheosis.AffixAttach;
 import dev.xkmc.playerdifficulty.compat.champions.ChampionLootGen;
 import dev.xkmc.playerdifficulty.compat.champions.SpawnReset;
+import dev.xkmc.playerdifficulty.compat.enchantwithmob.MobEnchantSpawn;
 import dev.xkmc.playerdifficulty.compat.scalinghealth.HealthScalingSpawn;
 import dev.xkmc.playerdifficulty.compat.twilightforest.TFGen;
 import dev.xkmc.playerdifficulty.content.capability.DifficultyCap;
@@ -26,6 +27,16 @@ public class CompatManager {
 			return;
 		if (ModList.get().isLoaded("champions")) {
 			SpawnReset.onSpawn(level, entity);
+		}
+	}
+
+	public static void spawnMobEnchant(DifficultyCap level, LivingEntity entity){
+		if (!DifficultyConfig.COMMON.mobEnchantEnable.get())
+			return;
+		if (entity.level.isClientSide())
+			return;
+		if (ModList.get().isLoaded("enchantwithmob")) {
+			MobEnchantSpawn.onSpawn(level, entity);
 		}
 	}
 

@@ -17,14 +17,15 @@ public class MobSpawnEventHandler {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEntityJoinWorld(EntityJoinWorldEvent evt) {
 		if (!(evt.getEntity() instanceof LivingEntity entity)) return;
-		if(!entity.getCapability(ChampionCapability.CHAMPION_CAP).isPresent())return;
+		if (!entity.getCapability(ChampionCapability.CHAMPION_CAP).isPresent()) return;
 		Player player = entity.level.getNearestPlayer(entity, 128);
-		if (player == null){
-			entity.getCapability(ChampionCapability.CHAMPION_CAP).ifPresent(e->e.getServer().setRank(RankManager.getLowestRank()));
+		if (player == null) {
+			entity.getCapability(ChampionCapability.CHAMPION_CAP).ifPresent(e -> e.getServer().setRank(RankManager.getLowestRank()));
 			return;
 		}
 		DifficultyCap cap = CompatManager.getDifficultyCap(player);
 		CompatManager.spawnChampion(cap, entity);
+		CompatManager.spawnMobEnchant(cap, entity);
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOW)

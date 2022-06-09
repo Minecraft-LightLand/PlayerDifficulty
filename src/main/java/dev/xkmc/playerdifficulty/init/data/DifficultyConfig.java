@@ -26,6 +26,10 @@ public class DifficultyConfig {
 		public final ForgeConfigSpec.IntValue apotheosisTierSeparation;
 		public final ForgeConfigSpec.DoubleValue apotheosisTierChance;
 
+		public final ForgeConfigSpec.BooleanValue mobEnchantEnable;
+		public final ForgeConfigSpec.DoubleValue mobEnchantFactor;
+		public final ForgeConfigSpec.DoubleValue mobEnchantVariance;
+
 		public final ForgeConfigSpec.DoubleValue scalingHealthFactor;
 
 		Common(ForgeConfigSpec.Builder builder) {
@@ -68,8 +72,17 @@ public class DifficultyConfig {
 			builder.pop();
 
 			builder.push("scalingHealth");
-			scalingHealthFactor = builder.comment("ScalingHealth difficulty to PlayerDifficulty difficulty ratio")
+			scalingHealthFactor = builder.comment("ScalingHealth difficulty to PlayerDifficulty difficulty ratio. Higher value means 1 difficulty in scaling health will be multiple points in PlayerDifficulty")
 					.defineInRange("scalingHealthFactor", 1, 0.001, 1000);
+			builder.pop();
+
+			builder.push("mobEnchant");
+			mobEnchantEnable = builder.comment("Add additional Mob Enchantment from Enchant With Mob mod")
+					.define("mobEnchantEnable", true);
+			mobEnchantFactor = builder.comment("EnchantWithMob level factor. Higher value means 1 difficulty point in PlayerDifficulty will give more and stronger enchants")
+					.defineInRange("mobEnchantFactor", 1, 0.001, 1000);
+			mobEnchantVariance = builder.comment("EnchantWithMob level variance. Value means by what percent the actual level can deviate from the average")
+					.defineInRange("mobEnchantVariance", 0.2, 0, 1);
 			builder.pop();
 
 		}
