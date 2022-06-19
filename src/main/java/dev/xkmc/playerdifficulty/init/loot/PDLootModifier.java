@@ -21,7 +21,7 @@ public class PDLootModifier extends LootModifier {
 	@NotNull
 	@Override
 	protected List<ItemStack> doApply(List<ItemStack> list, LootContext context) {
-		list.addAll(table.getRandomItems(context));
+		table.getRandomItems(context, list::add); // avoid calling loot modifier
 		return list;
 	}
 

@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.Deserializers;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 
 public class PDGLMSerializer extends GlobalLootModifierSerializer<PDLootModifier> {
@@ -14,7 +15,8 @@ public class PDGLMSerializer extends GlobalLootModifierSerializer<PDLootModifier
 
 	@Override
 	public PDLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] conditions) {
-		return new PDLootModifier(SERIALIZER.fromJson(object.get("table"), LootTable.class), conditions);
+		LootTable table = ForgeHooks.loadLootTable(SERIALIZER, location, object.get("table"), true, null);
+		return new PDLootModifier(table, conditions);
 	}
 
 	@Override
