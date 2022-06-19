@@ -14,7 +14,7 @@ import java.util.Map;
 public class ConfigGen extends ConfigDataProvider {
 
 	public ConfigGen(DataGenerator generator) {
-		super(generator, "./data/", "Player Difficulty Config");
+		super(generator, "data/", "Player Difficulty Config");
 	}
 
 	@Override

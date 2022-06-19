@@ -78,6 +78,7 @@ public class ChampionLootGen {
 	private static LootPool.Builder bindAffix(Item item, int count, IAffix affix) {
 		return LootTableTemplate.getPool(1, 0)
 				.add(LootTableTemplate.getItem(item, count)
+						.when(LootItemKilledByPlayerCondition.killedByPlayer())
 						.when(() -> ChampionDataGenHelper.getAffix(affix)));
 	}
 

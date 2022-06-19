@@ -13,7 +13,8 @@ public class MobEnchantSpawn {
 	public static void onSpawn(DifficultyCap level, LivingEntity entity) {
 		entity.getCapability(EnchantWithMob.MOB_ENCHANT_CAP).ifPresent((cap) -> {
 			int lv = getLevel(level, entity.level.random);
-			MobEnchantUtils.addRandomEnchantmentToEntity(entity, cap, entity.level.getRandom(), lv, true);
+			if (lv > 0)
+				MobEnchantUtils.addRandomEnchantmentToEntity(entity, cap, entity.level.getRandom(), lv, true);
 		});
 	}
 
