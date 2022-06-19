@@ -9,17 +9,13 @@ import dev.xkmc.playerdifficulty.init.data.ConfigGen;
 import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
 import dev.xkmc.playerdifficulty.init.data.LangData;
 import dev.xkmc.playerdifficulty.init.data.LootGen;
+import dev.xkmc.playerdifficulty.init.loot.PDGLMProvider;
 import dev.xkmc.playerdifficulty.network.NetworkManager;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -38,7 +34,7 @@ public class PlayerDifficulty {
 	public static final LcyRegistrate REGISTRATE = new LcyRegistrate(MODID);
 
 	private static void registerRegistrates(IEventBus bus) {
-		PDItems.register();
+		PDRegistry.register();
 		Handlers.register();
 		NetworkManager.register();
 		DifficultyConfig.init();
@@ -83,6 +79,7 @@ public class PlayerDifficulty {
 
 	public static void gatherData(GatherDataEvent event) {
 		event.getGenerator().addProvider(new ConfigGen(event.getGenerator()));
+		event.getGenerator().addProvider(new PDGLMProvider(event.getGenerator()));
 	}
 
 	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {

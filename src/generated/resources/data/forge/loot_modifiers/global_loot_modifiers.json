@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "entries": [
+    "playerdifficulty:adaptable_drops_lapis_lazuli",
+    "playerdifficulty:hasty_drops_redstone",
+    "playerdifficulty:paralyzing_drops_cobweb",
+    "playerdifficulty:infested_drops_infested_stone",
+    "playerdifficulty:dampening_drops_scute",
+    "playerdifficulty:magnetic_drops_lodestone",
+    "playerdifficulty:knocking_drops_quartz",
+    "playerdifficulty:plagued_drops_nether_wart",
+    "playerdifficulty:wounding_drops_amethyst_shard",
+    "playerdifficulty:lively_drops_ghast_tear",
+    "playerdifficulty:arctic_drops_blue_ice",
+    "playerdifficulty:reflective_drops_prismarine_shard",
+    "playerdifficulty:desecrating_drops_glowstone_dust",
+    "playerdifficulty:molten_drops_magma_cream",
+    "playerdifficulty:shielding_drops_copper_ingot",
+    "playerdifficulty:enkindling_drops_blaze_rod"
+  ]
+}

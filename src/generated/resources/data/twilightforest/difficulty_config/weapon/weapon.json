@@ -1,6 +1,28 @@
 {
   "_class": "dev.xkmc.playerdifficulty.content.spawn.WeaponConfig",
   "items": {
+    "BOW": [
+      {
+        "item": "twilightforest:ender_bow",
+        "level": 60.0,
+        "weight": 5
+      },
+      {
+        "item": "twilightforest:ice_bow",
+        "level": 60.0,
+        "weight": 5
+      },
+      {
+        "item": "twilightforest:seeker_bow",
+        "level": 60.0,
+        "weight": 5
+      },
+      {
+        "item": "twilightforest:triple_bow",
+        "level": 60.0,
+        "weight": 5
+      }
+    ],
     "MEELEE": [
       {
         "item": "twilightforest:ironwood_sword",
@@ -54,28 +76,6 @@
       },
       {
         "item": "twilightforest:block_and_chain",
-        "level": 60.0,
-        "weight": 5
-      }
-    ],
-    "BOW": [
-      {
-        "item": "twilightforest:ender_bow",
-        "level": 60.0,
-        "weight": 5
-      },
-      {
-        "item": "twilightforest:ice_bow",
-        "level": 60.0,
-        "weight": 5
-      },
-      {
-        "item": "twilightforest:seeker_bow",
-        "level": 60.0,
-        "weight": 5
-      },
-      {
-        "item": "twilightforest:triple_bow",
         "level": 60.0,
         "weight": 5
       }

@@ -1,0 +1,41 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:killed_by_player"
+    },
+    {
+      "condition": "champions:champion_properties",
+      "affixes": {
+        "values": [
+          "plagued"
+        ],
+        "matches": {
+          "min": 1
+        }
+      },
+      "entity": "this"
+    }
+  ],
+  "table": {
+    "pools": [
+      {
+        "rolls": 1.0,
+        "bonus_rolls": 0.0,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": 4.0,
+                "add": false
+              }
+            ],
+            "name": "minecraft:nether_wart"
+          }
+        ]
+      }
+    ]
+  },
+  "type": "playerdifficulty:main"
+}

@@ -11,6 +11,7 @@ import dev.xkmc.playerdifficulty.compat.twilightforest.TFGen;
 import dev.xkmc.playerdifficulty.content.capability.DifficultyCap;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
 import dev.xkmc.playerdifficulty.init.data.DifficultyConfig;
+import dev.xkmc.playerdifficulty.init.loot.PDGLMProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fml.ModList;
@@ -67,6 +68,12 @@ public class CompatManager {
 	public static void onLootGen(RegistrateLootTableProvider pvd) {
 		if (ModList.get().isLoaded("champions")) {
 			ChampionLootGen.genLoot(pvd);
+		}
+	}
+
+	public static void onGLMGen(PDGLMProvider pvd){
+		if (ModList.get().isLoaded("champions")) {
+			ChampionLootGen.genGLM(pvd);
 		}
 	}
 

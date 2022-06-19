@@ -1,16 +1,20 @@
 package dev.xkmc.playerdifficulty.init;
 
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.playerdifficulty.content.item.LevelChangeItem;
 import dev.xkmc.playerdifficulty.content.item.LevelCheckItem;
+import dev.xkmc.playerdifficulty.init.loot.PDGLMSerializer;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("unused")
-public class PDItems {
+import static dev.xkmc.playerdifficulty.init.PlayerDifficulty.REGISTRATE;
 
+@SuppressWarnings("unused")
+public class PDRegistry {
 
 	public static class Tab extends CreativeModeTab {
 
@@ -32,12 +36,14 @@ public class PDItems {
 	public static final Tab TAB_MAIN = new Tab("material");
 
 	static {
-		PlayerDifficulty.REGISTRATE.creativeModeTab(() -> TAB_MAIN);
+		REGISTRATE.creativeModeTab(() -> TAB_MAIN);
 		FoodProperties prop = new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().build();
-		CHECK = PlayerDifficulty.REGISTRATE.item("check", LevelCheckItem::new).register();
-		UP = PlayerDifficulty.REGISTRATE.item("up", p -> new LevelChangeItem(p.food(prop), 1)).register();
-		DOWN = PlayerDifficulty.REGISTRATE.item("down", p -> new LevelChangeItem(p.food(prop), -1)).register();
+		CHECK = REGISTRATE.item("check", LevelCheckItem::new).register();
+		UP = REGISTRATE.item("up", p -> new LevelChangeItem(p.food(prop), 1)).register();
+		DOWN = REGISTRATE.item("down", p -> new LevelChangeItem(p.food(prop), -1)).register();
 	}
+
+	public static final RegistryEntry<PDGLMSerializer> SER = REGISTRATE.simple("main", GlobalLootModifierSerializer.class, PDGLMSerializer::new);
 
 	public static void register() {
 
