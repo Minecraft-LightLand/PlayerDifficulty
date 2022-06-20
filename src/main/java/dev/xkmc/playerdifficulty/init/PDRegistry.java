@@ -9,6 +9,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import static dev.xkmc.playerdifficulty.init.PlayerDifficulty.REGISTRATE;
@@ -43,7 +44,7 @@ public class PDRegistry {
 		DOWN = REGISTRATE.item("down", p -> new LevelChangeItem(p.food(prop), -1)).register();
 	}
 
-	public static final RegistryEntry<PDGLMSerializer> SER = REGISTRATE.simple("main", GlobalLootModifierSerializer.class, PDGLMSerializer::new);
+	public static final RegistryEntry<PDGLMSerializer> SER = REGISTRATE.simple("main", ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, PDGLMSerializer::new);
 
 	public static void register() {
 

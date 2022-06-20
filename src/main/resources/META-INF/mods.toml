@@ -13,7 +13,7 @@ description='''
 [[dependencies.playerdifficulty]]
     modId="forge"
     mandatory=true
-    versionRange="[40.1,)"
+    versionRange="[40.1.51,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.playerdifficulty]]
@@ -25,7 +25,7 @@ description='''
 [[dependencies.playerdifficulty]]
     modId="l2library"
     mandatory=true
-    versionRange="[0.0.8,)"
+    versionRange="[0.2.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.playerdifficulty]]

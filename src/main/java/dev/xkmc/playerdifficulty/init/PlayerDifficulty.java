@@ -1,6 +1,6 @@
 package dev.xkmc.playerdifficulty.init;
 
-import dev.xkmc.l2library.base.LcyRegistrate;
+import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2library.serial.handler.Handlers;
 import dev.xkmc.playerdifficulty.content.capability.PlayerLevel;
@@ -31,7 +31,7 @@ public class PlayerDifficulty {
 
 	public static final String MODID = "playerdifficulty";
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final LcyRegistrate REGISTRATE = new LcyRegistrate(MODID);
+	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	private static void registerRegistrates(IEventBus bus) {
 		PDRegistry.register();
